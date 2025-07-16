@@ -141,4 +141,16 @@ npm run startup
   } 
   ```
 
+  @PathVariable: Extract values from URI template patterns defined with {variableName} placeholders.
+  ```bash
+  @DeleteMapping('/parameter/{id}')
+  deleteParameter(@PathVariable('id') id) {
+    /* 
+     * For the DELETE API http://localhost:404/parameter/1
+     * Value of "id" will be '1'
+     */
+    return { id };
+  }
+  ```
+
 
