@@ -6,6 +6,8 @@ import {
   RequestHeader,
   RequestBody,
   RequestParam,
+  DeleteMapping,
+  PathVariable,
 } from 'express-spring';
 
 // Examples of using Parameter Decorators in express-spring to get Request Parameters
@@ -47,4 +49,13 @@ export class ParameterController {
      */
     return queries;
   } 
+
+  /* 
+   * For the DELETE API http://localhost:404/parameter/1
+   * Value of "id" will be '1'
+   */
+  @DeleteMapping('/parameter/{id}')
+  deleteParameter(@PathVariable('id') id) {
+    return { id };
+  }
 }
