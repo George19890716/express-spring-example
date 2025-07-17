@@ -1,7 +1,7 @@
 {
   "name": "express-spring-example",
-  "version": "1.1.0",
-  "description": "Example of express-spring application",
+  "version": "1.2.0",
+  "description": "Example of express-spring application for version 1.2.0",
   "author": "Xu Ming <xumingxiaoming@163.com>",
   "main": "index.js",
   "scripts": {
