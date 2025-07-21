@@ -22,6 +22,7 @@ npm run startup
   │   ├── ExampleController.ts    # Example of using express-spring decorators to implement Restful API
   │   ├── index.ts                # Index file to export all Restful Controllers
   │   └── ParameterController.ts  # Example of using express-spring decorators to implement Restful API
+  ├── values/                     # Folder including JSON format data and extract them by "Value" decorator
   ├── application.config.json     # Configuration file for the application
   ├── main.ts                     # Main file to implement express-spring application
   ├── README.md                   # Project documentation
@@ -30,10 +31,13 @@ npm run startup
   ```
 
 ## Application Configuration
-  Entrie configuration can be modified in application.config.json (only "Port" can be changed in current version).
+  Entrie configuration can be modified in application.config.json.
 
   ### Port
   Default value is 404, and the valid range is from 0 to 50,000 inclusive.
+
+  ### ValuesFolder (supported in express-spring 1.3.0)
+  Default value is "values", to define the folder for storing JSON format data and extract them by "Value" decorator.
 
 ## Example of using express-spring decorators
 
@@ -157,6 +161,29 @@ npm run startup
      * Value of "id" will be '1'
      */
     return { id };
+  }
+  ```
+
+  ### Using Value Decorator (supported in express-spring 1.3.0):
+  JSON file in "values/example/message.json"
+  ```bash
+  {
+    "value": "This is an example of using Value decorator!"
+  }
+  ```
+
+  Extract data from "values/example/message.json" in Rest Controller
+  ```bash
+  @RestController
+  export class ValueController {
+    @Value('example.message.value')
+    private value: string; 
+
+    @GetMapping('/value')
+    getValue() {
+      // "this.value" will be "This is an example of using Value decorator!"
+      return this.value;
+    }
   }
   ```
 
