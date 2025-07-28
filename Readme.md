@@ -187,4 +187,17 @@ npm run startup
   }
   ```
 
+  ### Using Wait Decorator (supported in express-spring 1.3.1):
+  ```bash
+  @RestController
+  @RequestMapping('/')
+  export class TimeController {
+    @GetMapping('/time')
+    @Wait(5000)
+    getTime() {
+      return { message: 'Will get response after 5 seconds when using "@Wait(5000)"!' };
+    }
+  }
+  ```
+
 
